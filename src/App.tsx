@@ -40,29 +40,24 @@ function App() {
 
     const handleInc = (id: string) => {
         setCounterData((counterData) => {
-            return counterData.map((item) => {
-                if (id === item.id) {
-                    return {...item, count: item.count + 1}
-                }
-                return item
-            })
+            const newObj =  {...counterData }
+            newObj[id] = {...counterData.id, count: counterData[id].count + 1}
+            return newObj
         })
     }
 
     const handleReset = (id: string) => {
         setCounterData((counterData) => {
-            return counterData.map((item) => {
-                if (id === item.id) {
-                    return {...item, count: 0}
-                }
-                return item
-            })
+            const newObj =  {...counterData }
+            newObj[id] = {...counterData.id, count: 0}
+            return newObj
         })
     }
 
     return (
         <Container>
-            {Object.keys(counterData).map((key) => {return <Counter key={key} handleInc={() => handleInc(key)} count={counterData[key].count} counterLimit={counterData[key]. counterLimit} handleReset={() => handleReset(key)}/>})
+            {Object.keys(counterData).map((key) => {
+                return <Counter key={key} handleInc={() => handleInc(key)} count={counterData[key].count} counterLimit={counterData[key]. counterLimit} handleReset={() => handleReset(key)}/>})
             }
         </Container>
 

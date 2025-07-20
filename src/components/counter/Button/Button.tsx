@@ -1,7 +1,7 @@
 import {S} from "../Counter_Styles.ts";
 
 type ButtonProps = {
-    handleClick?: () => void;
+    handleClick: () => void;
     title: string;
     disabled?: boolean;
 }
