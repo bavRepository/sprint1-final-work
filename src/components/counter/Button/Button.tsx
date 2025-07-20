@@ -4,11 +4,11 @@ type ButtonProps = {
     handleReset?: () => void;
     handleInc?: () => void;
     title: string;
-    enable: boolean;
+    disabled: boolean;
 }
-const Button = ({ title,handleInc, enable, handleReset}: ButtonProps) => {
+const Button = ({ title,handleInc, disabled, handleReset}: ButtonProps) => {
     return (
-        <S.Button onClick={handleInc ? handleInc : handleReset} disabled={enable}>{title}</S.Button>
+        <S.Button onClick={handleInc ? handleInc : handleReset} disabled={disabled}>{title}</S.Button>
     );
 };
 
