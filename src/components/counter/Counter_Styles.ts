@@ -51,9 +51,8 @@ const Button = styled.button<{ $isDisabled?: boolean }>`
     font-size: 40px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
     &:hover {
-        animation: ${BtnHover} .2s linear;
+        animation: ${BtnHover} .25s linear;
     }
 `
 export const S = {ContentWrapper, Display, Count, ControlMenuWrapper, Button}
