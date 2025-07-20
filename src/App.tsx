@@ -7,10 +7,9 @@ import styled from "styled-components";
 export type CounterDataProps = {
     count: number;
     counterLimit: number;
-    id?: string;
 }
 
-let outerCounterData: CounterDataProps[] = [
+const outerCounterData: CounterDataProps[] = [
     {count: 0, counterLimit: 5,
        },
     {count: 1, counterLimit: 5,
@@ -23,45 +22,51 @@ let outerCounterData: CounterDataProps[] = [
        },
     {count: 5, counterLimit: 5,
        },
-
 ]
 
-outerCounterData = outerCounterData.map(item => {
-    return {...item, id: uuidv4()}
-})
+const arrayToDict = (arr:CounterDataProps[])=>{
+    const obj: Record<string, CounterDataProps> = {
+    }
+    arr.forEach(item=> {
+        obj[uuidv4()] = item
+    })
+    return obj
+}
+
+const counterDataList = arrayToDict(outerCounterData)
 
 function App() {
+    const [counterData, setCounterData] = useState<Record<string, CounterDataProps>>(counterDataList)
 
-    const [counterData, setCounterData] = useState<CounterDataProps[]>(outerCounterData)
-
-    const handleInc: (id: string | undefined)=>void = (id) => {
-        setCounterData((counterData:CounterDataProps[]):CounterDataProps[] => {
-            return counterData.map((item:CounterDataProps):CounterDataProps => {
+    const handleInc = (id: string) => {
+        setCounterData((counterData) => {
+            return counterData.map((item) => {
                 if (id === item.id) {
-                        return {...item, count: item.count + 1}
+                    return {...item, count: item.count + 1}
                 }
                 return item
+            })
         })
-    })
     }
-    const handleReset:(id:string | undefined)=>void = (id) => {
-        setCounterData((counterData:CounterDataProps[]):CounterDataProps[] => {
-            return counterData.map((item:CounterDataProps):CounterDataProps => {
+
+    const handleReset = (id: string) => {
+        setCounterData((counterData) => {
+            return counterData.map((item) => {
                 if (id === item.id) {
                     return {...item, count: 0}
                 }
                 return item
-                })
+            })
         })
     }
 
-  return (
-    <Container>{
-        counterData.map(counter => {
-                return  <Counter key={counter.id} handleInc={()=>handleInc(counter.id)} count={counter.count} counterLimit={counter.counterLimit}  handleReset={()=>handleReset(counter.id)}/>
-    })}
-    </Container>
-  )
+    return (
+        <Container>
+            {Object.keys(counterData).map((key) => {return <Counter key={key} handleInc={() => handleInc(key)} count={counterData[key].count} counterLimit={counterData[key]. counterLimit} handleReset={() => handleReset(key)}/>})
+            }
+        </Container>
+
+    )
 }
 
 const Container = styled.div`

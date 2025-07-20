@@ -10,7 +10,7 @@ type CounterProps = {
     counterLimit: number;
 }
 
-const Counter = (props:CounterProps) => {
+const Counter = (props:CounterProps ) => {
 
     const {handleInc, count,handleReset,counterLimit} = props;
 
