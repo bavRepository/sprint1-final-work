@@ -39,7 +39,7 @@ const BtnHover = keyframes`
 50% {transform: scale(0.95) translateY(2px); opacity: 0.6}
 `
 
-const Button = styled.button<{ $isCounterLimit?: boolean }>`
+const Button = styled.button`
     background-color: ${theme.colors.mainBrightColor};
     padding: 5px 20px;
     border: 4px solid rgba(0,0,0,0.8);
