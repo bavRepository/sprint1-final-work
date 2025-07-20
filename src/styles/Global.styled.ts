@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import { theme } from './Theme.ts'
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -51,10 +50,6 @@ ul {
 button  {
     background-color: unset;
     border: none;
-}
-
-section:not(:nth-of-type(2)){
-    background-color: ${theme.colors.mainBgColor};
 }
 
 @media (prefers-reduced-motion: reduce) {

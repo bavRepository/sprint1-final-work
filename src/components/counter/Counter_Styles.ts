@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 const ContentWrapper = styled.div`
@@ -38,7 +38,7 @@ const BtnHover = keyframes`
 50% {transform: scale(0.95) translateY(2px); opacity: 0}
 `
 
-const Button = styled.button`
+const Button = styled.button<{ $isDisabled?: boolean }>`
     ${(props: { $isDisabled?: boolean }) =>
     props.$isDisabled &&
     css<{ $isDisabled?: boolean }>`
