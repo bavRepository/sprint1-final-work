@@ -2,7 +2,7 @@ import styled, { keyframes} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 const ContentWrapper = styled.div`
-    margin-top: 15vh;
+    margin-top: 13px;
     min-width: 440px;
     min-height: 400px;
     border: 4px solid ${theme.colors.mainBrightColor};
