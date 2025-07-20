@@ -18,7 +18,7 @@ const Counter = (props:CounterProps) => {
         <S.ContentWrapper>
             <Display count={count}/>
             <S.ControlMenuWrapper>
-                <Button handleClick={handleInc} title={'inc'} disabled={count > counterLimit}/>
+                <Button handleClick={handleInc} title={'inc'} disabled={count === counterLimit}/>
                 <Button handleClick={handleReset} title={'reset'} disabled={!(count > 0)}/>
             </S.ControlMenuWrapper>
         </S.ContentWrapper>
