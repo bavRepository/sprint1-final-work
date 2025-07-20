@@ -13,7 +13,7 @@ const ContentWrapper = styled.div`
     color: ${theme.colors.mainDarkColor};
     border-radius: 1rem;
 `
-const Display = styled.div`
+const Display = styled.div<{$isLastNum?:boolean}>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,7 @@ const Display = styled.div`
     p {
         font-size: 100px;
         font-weight: 700;
-        color: rgba(214, 0, 0, 0.9);
+        color: ${props => props.$isLastNum ? 'rgba(214, 0, 0, 0.9)' :'rgba(0, 0, 0, 0.9)' };
     }
 `
 

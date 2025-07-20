@@ -3,7 +3,7 @@ import {S} from "../Counter_Styles.ts";
 type ButtonProps = {
     handleClick: () => void;
     title: string;
-    disabled?: boolean;
+    disabled: boolean;
 }
 
 
@@ -11,7 +11,6 @@ type ButtonProps = {
 const Button = ({ title,handleClick, disabled}: ButtonProps) => {
    
     return (
-
         <S.Button onClick={handleClick} disabled={disabled}>{title}</S.Button>
     );
 };

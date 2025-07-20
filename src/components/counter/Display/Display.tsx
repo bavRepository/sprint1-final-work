@@ -1,8 +1,8 @@
 import { S } from "../Counter_Styles";
 
-const Display = ({count}:{count:number}) => {
+const Display = ({count, isLimit}:{count:number, isLimit:boolean}) => {
     return (
-        <S.Display>
+        <S.Display $isLastNum={isLimit}>
             <p>{count}</p>
         </S.Display>
     );

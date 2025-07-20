@@ -11,7 +11,7 @@ export type CounterDataProps = {
 
 const outerCounterData: CounterDataProps[] = [
     {count: 0, counterLimit: 5,
-       },
+    },
     {count: 1, counterLimit: 5,
         },
     {count: 2, counterLimit: 5
@@ -39,9 +39,9 @@ function App() {
     const [counterData, setCounterData] = useState<Record<string, CounterDataProps>>(counterDataList)
 
     const handleInc = (id: string) => {
-        setCounterData((counterData) => {
-            const newObj =  {...counterData }
-            newObj[id] = {...counterData.id, count: counterData[id].count + 1}
+        setCounterData((counterData)=> {
+            const newObj =  {...counterData}
+            newObj[id] = {...counterData[id], count: counterData[id].count + 1}
             return newObj
         })
     }
@@ -49,18 +49,18 @@ function App() {
     const handleReset = (id: string) => {
         setCounterData((counterData) => {
             const newObj =  {...counterData }
-            newObj[id] = {...counterData.id, count: 0}
+            newObj[id] = {...counterData[id], count: 0}
             return newObj
         })
+
     }
 
     return (
         <Container>
             {Object.keys(counterData).map((key) => {
-                return <Counter key={key} handleInc={() => handleInc(key)} count={counterData[key].count} counterLimit={counterData[key]. counterLimit} handleReset={() => handleReset(key)}/>})
+                return <Counter key={key} handleInc={() => handleInc(key)} count={counterData[key].count} counterLimit={counterData[key].counterLimit} handleReset={() => handleReset(key)}/>})
             }
         </Container>
-
     )
 }
 
