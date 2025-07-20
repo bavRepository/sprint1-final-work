@@ -1,4 +1,4 @@
-import styled, {css, keyframes} from "styled-components";
+import styled, { keyframes} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
 const ContentWrapper = styled.div`
@@ -20,11 +20,12 @@ const Display = styled.div`
     background-color: ${theme.colors.mainBrightColor};
     min-height: 250px;
     border-radius: 1rem;
-`
-const Count = styled.p`
-    font-size: 100px;
-    font-weight: 700;
-    color: rgba(214, 0, 0, 0.9);
+
+    p {
+        font-size: 100px;
+        font-weight: 700;
+        color: rgba(214, 0, 0, 0.9);
+    }
 `
 
 const ControlMenuWrapper = styled.div`
@@ -35,15 +36,10 @@ const ControlMenuWrapper = styled.div`
 `
 
 const BtnHover = keyframes`
-50% {transform: scale(0.95) translateY(2px); opacity: 0}
+50% {transform: scale(0.95) translateY(2px); opacity: 0.6}
 `
 
-const Button = styled.button<{ $isDisabled?: boolean }>`
-    ${(props: { $isDisabled?: boolean }) =>
-    props.$isDisabled &&
-    css<{ $isDisabled?: boolean }>`
-            background-color: #00fa9a;
-        `}
+const Button = styled.button<{ $isCounterLimit?: boolean }>`
     background-color: ${theme.colors.mainBrightColor};
     padding: 5px 20px;
     border: 4px solid rgba(0,0,0,0.8);
@@ -51,8 +47,16 @@ const Button = styled.button<{ $isDisabled?: boolean }>`
     font-size: 40px;
     font-weight: 700;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
     &:hover {
-        animation: ${BtnHover} .25s linear;
+        animation: ${BtnHover} .5s linear infinite;
+    }
+    &:disabled {
+        background-color: #457586;
+        filter: grayscale(50%);
+    }
+    &:hover:disabled {
+        animation: none;
     }
 `
-export const S = {ContentWrapper, Display, Count, ControlMenuWrapper, Button}
+export const S = {ContentWrapper, Display, ControlMenuWrapper, Button}
