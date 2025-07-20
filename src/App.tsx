@@ -2,26 +2,26 @@
 import Counter from "./components/counter/Counter.tsx";
 import {useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
+import styled from "styled-components";
 
 export type CounterDataProps = {
-    name: string;
     count: number;
     counterLimit: number;
     id?: string;
 }
 
 let outerCounterData: CounterDataProps[] = [
-    {name: "1", count: 0, counterLimit: 5,
+    {count: 0, counterLimit: 5,
        },
-    {name: "2", count: 1, counterLimit: 5,
+    {count: 1, counterLimit: 5,
         },
-    {name: "3", count: 2, counterLimit: 5
+    {count: 2, counterLimit: 5
         },
-    {name: "4", count: 3, counterLimit: 5,
+    {count: 3, counterLimit: 5,
       },
-    {name: "5", count: 4, counterLimit: 5,
+    {count: 4, counterLimit: 5,
        },
-    {name: "6", count: 5, counterLimit: 5,
+    {count: 5, counterLimit: 5,
        },
 
 ]
@@ -56,12 +56,21 @@ function App() {
     }
 
   return (
-    <div>{
+    <Container>{
         counterData.map(counter => {
                 return  <Counter key={counter.id} handleInc={()=>handleInc(counter.id)} count={counter.count} counterLimit={counter.counterLimit}  handleReset={()=>handleReset(counter.id)}/>
     })}
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 440px));
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+`
 
 export default App
