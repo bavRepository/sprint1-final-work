@@ -1,41 +1,25 @@
 import {S} from './Counter_Styles.ts';
-import {useState} from "react";
 import Button from "./Button/Button.tsx";
 import Display from "./Display/Display.tsx";
 
 
 type CounterProps = {
-    count: number;
-    counterLimit: number;
+    handleInc: (id:string)=>void;
+    handleReset: ()=>void;
     isCounterNotChanged: boolean;
+    count: number;
 }
 
-const counterObj: CounterProps = {
-    count: 0,
-    counterLimit: 5,
-    isCounterNotChanged: true,
-}
+const Counter = (props:CounterProps) => {
 
-
-
-const Counter = () => {
-
-    const [counter, setCounter] = useState<CounterProps>(counterObj)
-
-    const handleInc:()=>void = () => {
-        setCounter((counter) => ({...counter, isCounterNotChanged: false, count: counter.count + 1}))
-        }
-
-    const handleReset = () =>{
-        setCounter(counter => ({...counter, isCounterNotChanged: true, count: 0}))
-    }
+    const {handleInc, count,handleReset,isCounterNotChanged} = props;
 
     return (
         <S.ContentWrapper>
-            <Display count={counter.count}/>
+            <Display count={count}/>
             <S.ControlMenuWrapper>
-                <Button handleInc={handleInc} title={'inc'} disabled={counter.count > 4}/>
-                <Button handleReset={handleReset} title={'reset'} disabled={counter.isCounterNotChanged}/>
+                <Button handleInc={handleInc} title={'inc'} disabled={false}/>
+                <Button handleReset={handleReset} title={'reset'} disabled={isCounterNotChanged}/>
             </S.ControlMenuWrapper>
         </S.ContentWrapper>
     );

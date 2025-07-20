@@ -54,6 +54,7 @@ const Button = styled.button<{ $isCounterLimit?: boolean }>`
     &:disabled {
         background-color: #457586;
         filter: grayscale(50%);
+        cursor: auto;
     }
     &:hover:disabled {
         animation: none;
