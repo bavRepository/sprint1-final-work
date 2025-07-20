@@ -1,14 +1,13 @@
 import {S} from "../Counter_Styles.ts";
 
 type ButtonProps = {
-    handleReset?: () => void;
-    handleInc?: (id:string) => void;
+    handleClick?: (id:string) => void;
     title: string;
     disabled?: boolean;
 }
-const Button = ({ title,handleInc, disabled, handleReset}: ButtonProps) => {
+const Button = ({ title,handleClick, disabled}: ButtonProps) => {
     return (
-        <S.Button onClick={handleInc ? handleInc : handleReset} disabled={disabled}>{title}</S.Button>
+        <S.Button onClick={handleClick} disabled={disabled}>{title}</S.Button>
     );
 };
 

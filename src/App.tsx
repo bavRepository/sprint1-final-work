@@ -12,16 +12,19 @@ export type CounterDataProps = {
 }
 
 let outerCounterData: CounterDataProps[] = [
-    {name: "1", count: 1, counterLimit: 5,
+    {name: "1", count: 0, counterLimit: 5,
         isCounterNotChanged: true,},
-    {name: "2", count: 2, counterLimit: 5,
+    {name: "2", count: 1, counterLimit: 5,
         isCounterNotChanged: true,},
-    {name: "3", count: 3, counterLimit: 5,
+    {name: "3", count: 2, counterLimit: 5,
         isCounterNotChanged: true,},
-    {name: "4", count: 4, counterLimit: 5,
+    {name: "4", count: 3, counterLimit: 5,
         isCounterNotChanged: true,},
-    {name: "5", count: 5, counterLimit: 5,
+    {name: "5", count: 4, counterLimit: 5,
         isCounterNotChanged: true,},
+    {name: "6", count: 5, counterLimit: 5,
+        isCounterNotChanged: true,},
+
 ]
 
 outerCounterData = outerCounterData.map(item => {
@@ -35,21 +38,21 @@ function App() {
     const handleInc:(id:string)=>void = (id) => {
         setCounterData((counterData:CounterDataProps[]):CounterDataProps[] => {
             return counterData.map((item:CounterDataProps):CounterDataProps => {
-            if (id === item.id) {
-                if (item.count === 4){
-                    return {...item, count: item.count + 1, isCounterNotChanged:false}
+                if (id === item.id) {
+                        return {...item, count: item.count + 1, isCounterNotChanged:false}
                 }
-                return {...item, count: item.count + 1}
-            }
-            return item
+                return item
         })
     })
     }
-    const handleReset = () =>{
-        setCounterData(counterData => {
-            return counterData.map(item => {
-                return  {...item, count: 0, isCounterNotChanged: true}
-            })
+    const handleReset:(id:string)=>void = (id) => {
+        setCounterData((counterData:CounterDataProps[]):CounterDataProps[] => {
+            return counterData.map((item:CounterDataProps):CounterDataProps => {
+                if (id === item.id) {
+                    return {...item, count: 0, isCounterNotChanged: true}
+                }
+                return item
+                })
         })
     }
 
@@ -57,7 +60,7 @@ function App() {
     <div>{
         counterData.map(counter => {
             if (counter){
-                return  <Counter key={counter.id} handleInc={()=>handleInc(counter.id)} count={counter.count} handleReset={handleReset}/>
+                return  <Counter key={counter.id} handleInc={()=>handleInc(counter.id)} count={counter.count} counterLimit={counter.counterLimit}  handleReset={()=>handleReset(counter.id)} isCounterNotChanged={counter.isCounterNotChanged}/>
             }
     })}
     </div>
