@@ -4,23 +4,22 @@ import Display from "./Display/Display.tsx";
 
 
 type CounterProps = {
-    handleInc: (id:string)=>void;
-    handleReset: (id:string)=>void;
-    isCounterNotChanged: boolean;
+    handleInc: ()=>void;
+    handleReset: ()=>void;
     count: number;
     counterLimit: number;
 }
 
 const Counter = (props:CounterProps) => {
 
-    const {handleInc, count,handleReset,isCounterNotChanged ,counterLimit} = props;
+    const {handleInc, count,handleReset,counterLimit} = props;
 
     return (
         <S.ContentWrapper>
             <Display count={count}/>
             <S.ControlMenuWrapper>
-                <Button handleClick={handleInc} title={'inc'} disabled={count > counterLimit - 1}/>
-                <Button handleClick={handleReset} title={'reset'} disabled={isCounterNotChanged}/>
+                <Button handleClick={handleInc} title={'inc'} disabled={count > counterLimit}/>
+                <Button handleClick={handleReset} title={'reset'} disabled={!(count > 0)}/>
             </S.ControlMenuWrapper>
         </S.ContentWrapper>
     );
