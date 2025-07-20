@@ -1,15 +1,15 @@
 {
-  "name": "package",
+  "name": "sprint1-final-work",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://bavRepository.github.io/sprint1-final-work",
+  "homepage": "https://bavRepository.github.io/sprint1-final-work/",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --ext .ts,.tsx",
     "preview": "vite preview"
   },
   "dependencies": {
