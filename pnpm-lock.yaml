@@ -78,9 +78,6 @@ importers:
       playwright:
         specifier: ^1.54.1
         version: 1.54.1
-      storybook:
-        specifier: 9.0.17
-        version: 9.0.17(@testing-library/dom@10.4.0)
       typescript:
         specifier: ~5.8.3
         version: 5.8.3
