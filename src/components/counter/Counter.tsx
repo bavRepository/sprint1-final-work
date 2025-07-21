@@ -1,6 +1,6 @@
 import {S} from './Counter_Styles.ts';
-import Button from "./Button/Button.tsx";
-import Display from "./Display/Display.tsx";
+import Display from "../display/Display.tsx";
+import { Button } from "../common/button/Button.tsx";
 
 
 type CounterProps = {

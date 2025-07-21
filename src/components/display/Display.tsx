@@ -1,4 +1,4 @@
-import { S } from "../Counter_Styles";
+import { S } from "./Display_styles";
 
 const Display = ({count, isLimit}:{count:number, isLimit:boolean}) => {
     return (
