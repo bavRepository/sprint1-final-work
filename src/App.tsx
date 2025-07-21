@@ -54,7 +54,7 @@ function App() {
 
     }
 
-    const renderHtmlElements:(arr:Record<string, CounterDataProps>)=>ReactNode[] = (arr) => {
+    const renderCounterHtmlElements:(arr:Record<string, CounterDataProps>)=>ReactNode[] = (arr) => {
         const arrayOfKeysWithId = Object.keys(arr)
         return arrayOfKeysWithId.map((id) => {
             return <Counter key={id}
@@ -65,7 +65,7 @@ function App() {
             />})
     }
 
-    const elements = renderHtmlElements(counterDataList)
+    const elements = renderCounterHtmlElements(counterDataList)
 
     return (
         <Container>
