@@ -1,6 +1,5 @@
-// import { useState } from 'react'
 import Counter from "./components/counter/Counter.tsx";
-import {useState} from "react";
+import { type ReactNode, useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import styled from "styled-components";
 
@@ -55,11 +54,22 @@ function App() {
 
     }
 
+    const renderHtmlElements:(arr:Record<string, CounterDataProps>)=>ReactNode[] = (arr) => {
+        const arrayOfKeysWithId = Object.keys(arr)
+        return arrayOfKeysWithId.map((id) => {
+            return <Counter key={id}
+                            handleInc={() => handleInc(id)}
+                            count={counterData[id].count}
+                            counterLimit={counterData[id].counterLimit}
+                            handleReset={() => handleReset(id)}
+            />})
+    }
+
+    const elements = renderHtmlElements(counterDataList)
+
     return (
         <Container>
-            {Object.keys(counterData).map((key) => {
-                return <Counter key={key} handleInc={() => handleInc(key)} count={counterData[key].count} counterLimit={counterData[key].counterLimit} handleReset={() => handleReset(key)}/>})
-            }
+            {elements}
         </Container>
     )
 }
